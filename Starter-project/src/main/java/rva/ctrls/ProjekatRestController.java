@@ -15,8 +15,7 @@ import rva.repository.ProjekatRepository;
 
 @RestController
 public class ProjekatRestController {
-//dodaj da se obrise kod studenta da radi na tom projektu kad se proj obrise
-	
+
 	@Autowired
 	public ProjekatRepository projekatRepository;
 
@@ -63,31 +62,22 @@ public class ProjekatRestController {
 		return new ResponseEntity<Projekat>(HttpStatus.OK);
 
 	}
-	
+
 	@DeleteMapping("projekat/{id}")
-	public ResponseEntity<Projekat> deleteProjekat (@PathVariable ("id") Integer id) {
-		
-		if(!projekatRepository.existsById(id)) {
-			
+	public ResponseEntity<Projekat> deleteProjekat(@PathVariable("id") Integer id) {
+
+		if (!projekatRepository.existsById(id)) {
+
 			return new ResponseEntity<Projekat>(HttpStatus.NO_CONTENT);
 		}
-		
-		projekatRepository.deleteById(id); 
-		
-		if(id==-100)
-		{
+
+		projekatRepository.deleteById(id);
+
+		if (id == -100) {
 			jdbcTemplate.execute("INSERT INTO \"projekat\" (\"id\", \"naziv\", \"oznaka\", \"opis\") "
 					+ "VALUES(-100, 'test', 'test','test')");
 		}
 		return new ResponseEntity<Projekat>(HttpStatus.OK);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -26,21 +26,17 @@ public class SmerRestController {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	// vracamo sve smerove - dakle kolekcija ti treba
 	@GetMapping("smer")
 	public Collection<Smer> getSmerovi() {
 
 		return smerRepository.findAll();
 	}
 
-	// preko id-ja
 	@GetMapping("smer/{id}")
 	public Smer getSmer(@PathVariable("id") Integer id) {
 
 		return smerRepository.getOne(id);
 	}
-
-	// izlistava one koji imaju ovaj string u svom nazivu
 
 	@GetMapping("smerNaziv/{naziv}")
 	public Collection<Smer> getSmerByNaziv(@PathVariable("naziv") String naziv) {
@@ -52,7 +48,7 @@ public class SmerRestController {
 	public ResponseEntity<Smer> insertSmer(@RequestBody Smer smer) {
 
 		if (!smerRepository.existsById(smer.getId())) {
-			// ukoliko ne postoji u bazi ovaj id onda mozemo ubaciti
+
 			smerRepository.save(smer);
 			return new ResponseEntity<Smer>(HttpStatus.OK);
 		}
@@ -81,7 +77,7 @@ public class SmerRestController {
 			jdbcTemplate
 					.execute("INSERT INTO \"smer\" (\"id\", \"naziv\", \"oznaka\") " + "VALUES (-100, 'Test', 'Test')");
 		}
-			return new ResponseEntity<Smer>(HttpStatus.OK); 
+		return new ResponseEntity<Smer>(HttpStatus.OK);
 	}
 
 }

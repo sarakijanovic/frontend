@@ -9,7 +9,7 @@ public class ZdravoSvimaController {
 	
 	@RequestMapping("/")
 	public String zdravoSvima() {
-		return "Zdravo svima i šta imaaaaaa?";
+		return "Zdravo svima";
 	}
 
 }
