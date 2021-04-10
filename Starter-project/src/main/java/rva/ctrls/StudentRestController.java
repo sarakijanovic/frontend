@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import rva.jpa.Student;
+import rva.jpa.Grupa;
+import rva.repository.GrupaRepository;
 import rva.repository.StudentRepository;
 
 @RestController
@@ -25,6 +27,9 @@ public class StudentRestController {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private GrupaRepository grupaRepository;
 
 	@GetMapping("student")
 	public Collection<Student> getStudenti() {
@@ -42,6 +47,23 @@ public class StudentRestController {
 
 		return studentRepository.findByBrojIndeksaContainingIgnoreCase(brojIndeksa);
 	}
+	
+	@GetMapping("studentGod/{godStudija}")
+	public Collection<Student> getStudentByGodStudija (@PathVariable ("godStudija") Integer god) {
+		
+		//vraca redovne studente neke godine; npr. ako se prosledi broj 3, vracace redovne studente trece godine
+		
+		Integer x = 2021 - god; 
+		return studentRepository.findByBrojIndeksaContainingIgnoreCase(Integer.toString(x)); 
+	}
+	
+	@GetMapping("studentiGrupa/{id}") 
+	public Collection<Student> getStudentiGrupa(@PathVariable ("id") Integer id) {
+		
+		Grupa g = grupaRepository.getOne(id);
+		
+		return studentRepository.findByGrupa(g); 
+	}
 
 	@PostMapping("student")
 	public ResponseEntity<Student> insertStudent(@RequestBody Student student) {
@@ -54,6 +76,7 @@ public class StudentRestController {
 
 		return new ResponseEntity<Student>(HttpStatus.CONFLICT);
 	}
+
 
 	@PutMapping("student")
 	public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
