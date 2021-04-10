@@ -31,4 +31,6 @@ public class GrupaRestController {
 	public Collection<Grupa> getGrupaByNaziv (@PathVariable ("oznaka") String oznaka) {
 		return grupaRepository.findByOznakaContainingIgnoreCase(oznaka);
 	}
+	
+	
 }

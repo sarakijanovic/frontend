@@ -12,6 +12,7 @@ import rva.repository.StudentRepository;
 
 @RestController
 public class StudentRestController {
+	//MOGLA BI DA DODAS DA AKO SE OBRISE PROJEKAT DA SE OBRISE I STUDENT NA TOM PROJEKTU 
 	
 	@Autowired
 	private StudentRepository studentRepository;
@@ -26,4 +27,11 @@ public class StudentRestController {
 		
 		return studentRepository.getOne(id);
 	}
+	
+	@GetMapping("studentBrInd/{brojIndeksa}")
+	public Collection <Student> getStudentiByBrInd(@PathVariable ("brojIndeksa") String brojIndeksa) {
+		
+		return studentRepository.findByBrojIndeksaContainingIgnoreCase(brojIndeksa);
+	}
+	
 }

@@ -15,7 +15,8 @@ import rva.repository.ProjekatRepository;
 
 @RestController
 public class ProjekatRestController {
-
+//dodaj da se obrise kod studenta da radi na tom projektu kad se proj obrise
+	
 	@Autowired
 	public ProjekatRepository projekatRepository;
 
