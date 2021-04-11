@@ -77,7 +77,7 @@ public class SmerRestController {
 	}
 
 	@ApiOperation(value = "Brisanje podataka o smeru")
-	@Transactional
+	//@Transactional
 	@DeleteMapping("smer/{id}")
 	public ResponseEntity<Smer> deleteSmer(@PathVariable("id") Integer id) {
 

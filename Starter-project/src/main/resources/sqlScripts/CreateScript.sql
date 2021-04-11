@@ -47,9 +47,9 @@ ALTER TABLE grupa ADD CONSTRAINT pk_grupa PRIMARY KEY(id);
 ALTER TABLE student ADD CONSTRAINT pk_student PRIMARY KEY(id);
 
 --strani ključevi
-ALTER TABLE grupa ADD CONSTRAINT fk_grupa_smer FOREIGN KEY(smer) REFERENCES smer(id);
-ALTER TABLE student ADD CONSTRAINT fk_student_grupa FOREIGN KEY(grupa) REFERENCES grupa(id);
-ALTER TABLE student ADD CONSTRAINT fk_student_projekat FOREIGN KEY(projekat) REFERENCES projekat(id);
+ALTER TABLE grupa ADD CONSTRAINT fk_grupa_smer FOREIGN KEY(smer) REFERENCES smer(id) ON DELETE CASCADE;
+ALTER TABLE student ADD CONSTRAINT fk_student_grupa FOREIGN KEY(grupa) REFERENCES grupa(id) ON DELETE CASCADE ;
+ALTER TABLE student ADD CONSTRAINT fk_student_projekat FOREIGN KEY(projekat) REFERENCES projekat(id) ON DELETE CASCADE;
 
 --indeksiranje 
 CREATE INDEX idxpk_smer ON smer(id);
@@ -69,6 +69,7 @@ CREATE SEQUENCE grupa_seq
 INCREMENT 1;
 CREATE SEQUENCE student_seq 
 INCREMENT 1;
+
 
 
 
