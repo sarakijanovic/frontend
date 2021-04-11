@@ -72,6 +72,7 @@ public class SmerRestController {
 		if (!smerRepository.existsById(id))
 			return new ResponseEntity<Smer>(HttpStatus.NO_CONTENT);
 
+		jdbcTemplate.execute("DELETE FROM grupa WHERE smer=" + id);
 		smerRepository.deleteById(id);
 		if (id == -100) {
 			jdbcTemplate
