@@ -1,17 +1,5 @@
 --INSERT SCRIPT PROJEKTNI ZADATAK 3, SARA KIJANOVIC IT 14/2018
 
---TEST PODACI 
-INSERT INTO "smer"("id", "naziv", "oznaka")
-VALUES (-100, 'test naziv', 'test oznaka');
-
-INSERT INTO "projekat"("id", "naziv", "oznaka", "opis")
-VALUES(-100, 'test', 'test','test');
-
-INSERT INTO "grupa"("id", "oznaka", "smer")
-VALUES (-100, 'test', 1); 
-
-INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
-VALUES (-100, 'test', 'test', 'test', 1, 1);
 
 select * from smer;
 select * from projekat;
@@ -99,6 +87,8 @@ VALUES (11, 'GR 1', 6);
 INSERT INTO "grupa"("id", "oznaka", "smer")
 VALUES (12, 'GR 2', 6); 
 
+
+
 --ARHITEKTURA
 INSERT INTO "grupa"("id", "oznaka", "smer")
 VALUES (13, 'AI 1', 7); 
@@ -133,7 +123,23 @@ INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat
 VALUES (9, 'Aleksandra', 'Mirkovic', 'IN1-2015', 5, 2);
 
 
-select * from student 
+--TEST PODACI 
+INSERT INTO "smer"("id", "naziv", "oznaka")
+VALUES (-100, 'test naziv', 'test oznaka');
+
+INSERT INTO "projekat"("id", "naziv", "oznaka", "opis")
+VALUES(-100, 'test', 'test','test');
+
+INSERT INTO "grupa"("id", "oznaka", "smer")
+VALUES (-100, 'test', 1); 
+
+INSERT INTO "student"("id", "ime", "prezime", "broj_indeksa", "grupa", "projekat")
+VALUES (-100, 'test', 'test', 'test', 1, 1);
+
+INSERT INTO "grupa"("id", "oznaka", "smer")
+VALUES (955, 'test', -100);
+
+--select * from student 
 
 
 
