@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatSidenavModule } from '@angular/material/sidenav'
@@ -18,6 +19,10 @@ import { StudentComponent } from './components/student/student.component';
 import { GrupaComponent } from './components/grupa/grupa.component';
 import { ProjekatComponent } from './components/projekat/projekat.component';
 import { SmerComponent } from './components/smer/smer.component';
+import {MatTableModule } from '@angular/material/table'; 
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +33,7 @@ import { SmerComponent } from './components/smer/smer.component';
     GrupaComponent,
     ProjekatComponent,
     SmerComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { SmerComponent } from './components/smer/smer.component';
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
+    HttpClientModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
