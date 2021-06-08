@@ -6,7 +6,6 @@ import { Smer } from 'src/app/models/smer';
 import { SmerService } from 'src/app/services/smer.service';
 import { SmerDialogComponent } from '../dialogs/smer-dialog/smer-dialog.component';
 
-
 @Component({
   selector: 'app-smer',
   templateUrl: './smer.component.html',
@@ -14,11 +13,12 @@ import { SmerDialogComponent } from '../dialogs/smer-dialog/smer-dialog.componen
 })
 export class SmerComponent implements OnInit, OnDestroy {
 
-  constructor(private smerService: SmerService,
-    private dialog: MatDialog) { }
   subscription: Subscription;
   displayedColumns = ['id', 'naziv', 'oznaka', 'actions'];
   dataSource: MatTableDataSource<Smer>;
+  constructor(private smerService: SmerService,
+    private dialog: MatDialog) { }
+
 
 
   ngOnDestroy(): void {

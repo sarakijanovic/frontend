@@ -13,18 +13,20 @@ import { ProjekatDialogComponent } from '../dialogs/projekat-dialog/projekat-dia
 })
 export class ProjekatComponent implements OnInit, OnDestroy {
 
+  subscription: Subscription;
+  displayedColumns = ['id', 'naziv', 'opis', 'oznaka','actions'];
+  dataSource: MatTableDataSource<Projekat>;
+
   constructor(private projekatService : ProjekatService,
     private dialog: MatDialog) { }
 
-  subscription: Subscription;
-  displayedColumns = ['id', 'naziv', 'opis', 'oznaka'];
-  dataSource: MatTableDataSource<Projekat>;
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe(); 
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.loadData(); 
   }
 
   public loadData() {

@@ -1,7 +1,9 @@
+import { Smer } from "./smer";
+
 export class Grupa {
 
     id: number;
-    oznaka: string; 
-    //FALI STRANI KLJUC 
+    oznaka: string;
+    smer: Smer;
 
 }

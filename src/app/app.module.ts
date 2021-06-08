@@ -28,7 +28,11 @@ import { SmerDialogComponent } from './components/dialogs/smer-dialog/smer-dialo
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/projekat-dialog.component'; 
+import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/projekat-dialog.component';
+import { GrupaDialogComponent } from './components/dialogs/grupa-dialog/grupa-dialog.component'; 
+import {MatSelectModule} from '@angular/material/select';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,8 @@ import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/pr
     ProjekatComponent,
     SmerComponent,
     SmerDialogComponent,
-    ProjekatDialogComponent
+    ProjekatDialogComponent,
+    GrupaDialogComponent
 
   ],
   imports: [
@@ -60,7 +65,8 @@ import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/pr
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
 
   ],
   providers: [],

@@ -93,9 +93,6 @@ export class SmerDialogComponent implements OnInit {
       this.dialogRef.close(); 
       this.snackBar.open('Odustali ste.', 'Zatvori', {
         duration: 1000}) 
-
-
-
     }
 
 
