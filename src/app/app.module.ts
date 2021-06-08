@@ -21,8 +21,14 @@ import { ProjekatComponent } from './components/projekat/projekat.component';
 import { SmerComponent } from './components/smer/smer.component';
 import {MatTableModule } from '@angular/material/table'; 
 import { HttpClientModule } from '@angular/common/http';
-import { MatToolbarModule } from '@angular/material/toolbar'
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SmerDialogComponent } from './components/dialogs/smer-dialog/smer-dialog.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/projekat-dialog.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +38,9 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     StudentComponent,
     GrupaComponent,
     ProjekatComponent,
-    SmerComponent
+    SmerComponent,
+    SmerDialogComponent,
+    ProjekatDialogComponent
 
   ],
   imports: [
@@ -47,7 +55,13 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     MatExpansionModule,
     MatTableModule,
     HttpClientModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
