@@ -1,9 +1,13 @@
 <mat-toolbar color="primary">
-    <span class="title-center">Grupa</span>
+    <span class="title-center">GRUPA</span>
 </mat-toolbar>
 
 <div class="container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" class="mat-cell" >
+    <mat-form-field>
+        <input matInput placeholder="Pretraga grupa" (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+      
+    <mat-table #table matSort [dataSource]="dataSource" class="mat-cell" >
 
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>ID Grupe</mat-header-cell>
@@ -48,4 +52,21 @@
         <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)">
         </mat-row>
     </mat-table>
+    <mat-paginator [length] = "100" [pageSize] ="5" [pageSizeOptions]="[1, 5, 10, 25, 50, 100]"></mat-paginator>
+
 </div> 
+<div class="container mat-elevation-z8">
+<app-student *ngIf="selektovanaGrupa"
+[selektovanaGrupa] = "selektovanaGrupa">
+    <!--ugnjezdicemo sad studente-->
+    <!--angular direktive-->
+ 
+    <!--radimo data binding
+    sa leve strane je property iz studenta a sa desne
+iz grupe  radimo data binding
+    sa leve strane je property iz studenta a sa desne
+iz grupe-->
+
+   
+</app-student>
+</div>

@@ -1,8 +1,12 @@
-export class Student {
+import { Grupa } from "./grupa";
+import { Projekat } from "./projekat";
 
+export class Student {
+    
     id: number;
+    brojIndeksa : string;
     ime: string;
     prezime: string; 
-    //strani kljuc grupe 
-    //strani kljuc projekta 
+    grupa : Grupa; 
+    projekat : Projekat; 
 }

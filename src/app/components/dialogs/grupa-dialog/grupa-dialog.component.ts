@@ -22,7 +22,7 @@ export class GrupaDialogComponent implements OnInit {
     public grupaService : GrupaService) { }
 
   ngOnInit(): void {
-    //ovde ucitavamo niz 
+   
     this.smerService.getAllSmerovi().subscribe(
       data => {
         this.smerovi = data;

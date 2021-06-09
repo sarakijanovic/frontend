@@ -31,6 +31,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjekatDialogComponent } from './components/dialogs/projekat-dialog/projekat-dialog.component';
 import { GrupaDialogComponent } from './components/dialogs/grupa-dialog/grupa-dialog.component'; 
 import {MatSelectModule} from '@angular/material/select';
+import { StudentDialogComponent } from './components/dialogs/student-dialog/student-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import {MatSelectModule} from '@angular/material/select';
     SmerComponent,
     SmerDialogComponent,
     ProjekatDialogComponent,
-    GrupaDialogComponent
+    GrupaDialogComponent,
+    StudentDialogComponent
 
   ],
   imports: [
@@ -66,7 +70,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule
 
   ],
   providers: [],

@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Smer } from 'src/app/models/smer';
@@ -16,6 +18,10 @@ export class SmerComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   displayedColumns = ['id', 'naziv', 'oznaka', 'actions'];
   dataSource: MatTableDataSource<Smer>;
+
+  @ViewChild(MatSort, {static : false}) sort :MatSort; 
+  @ViewChild(MatPaginator, {static : false}) paginator : MatPaginator;
+
   constructor(private smerService: SmerService,
     private dialog: MatDialog) { }
 
@@ -26,18 +32,17 @@ export class SmerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //ova metoda se iyvrsava prilikom ucitavanja ove komponentw
+
     this.loadData();
   }
 
   public loadData() {
-    //ova metoda ce se prva izvrsiti kad bude pkrenua komponenta
-    //da bismo mi imali pristup, moramo injektovati servis u okviru ovog ts.a
-    //injektujemo zavisnost i to se vrsi na nivou konsturktora 
-    //posto smo injektovali, imamo pristup svim metodama u okviru tog servis
+
     this.subscription = this.smerService.getAllSmerovi().subscribe(
       data => {
         this.dataSource= new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
 
       ),
@@ -47,26 +52,29 @@ export class SmerComponent implements OnInit, OnDestroy {
       }
     
 
-    //rekli smo da je ovo neka metoda gde se mi subscribujemo
-    //kako bismo dobili ove komponente iz one observable 
+   
 
   }
 
   public openDialog(flag: number, id? : number, naziv? : string, oznaka? : string): void {
     const dialogRef = this.dialog.open(SmerDialogComponent, {data: {id,naziv,oznaka}} );
-    //treba da postavimo flag koji nam odg
-    //u okviru ove dialog reference cemo vratiti instancu
-    //i smestiti vrednost flega unutar toga 
-
+   
     dialogRef.componentInstance.flag = flag;
 
     dialogRef.afterClosed().subscribe(res => {
       if(res==1)
       {
-        //ukoliko je uspesno, treba da se opet ucitaju podaci 
         this.loadData(); 
       }
     })
+  }
+
+  applyFilter(filterValue : string) {
+
+    filterValue = filterValue.trim(); 
+    //trimuju se spejsovi 
+    filterValue = filterValue.toLowerCase(); 
+    this.dataSource.filter = filterValue;
   }
 
 

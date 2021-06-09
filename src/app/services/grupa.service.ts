@@ -12,7 +12,7 @@ export class GrupaService {
   constructor(public httpClient: HttpClient) { }
 
   public getAllGrupe(): Observable<any> {
-    console.log('proveradsvsdv'); 
+    
     return this.httpClient.get(`${GRUPA_URL}`);
    
   }

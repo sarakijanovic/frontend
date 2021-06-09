@@ -7,16 +7,9 @@
         <div class="form">
            <mat-form-field>
                <input matInput placeholder="Oznaka" [(ngModel)] = "data.oznaka" name="oznaka" [disabled]= "flag == 3" required>
-               <!--nasa komponenta ce prosledjivati, ali ce nesto morati i da vrati. podaci su nam ova promenljiva data
-            kada je u pitanju brisanje, zlim da mi prikazes naziv koji brises, ali u svim slucajevima je required -->
+        
            </mat-form-field>     
         </div>
-
-       <!-- <div class="form">
-            <mat-form-field>
-                <input matInput placeholder="Smer" [(ngModel)] = "data.smer" name="smer" [disabled]= "flag == 3" required>
-            </mat-form-field>     
-         </div> -->
 
          <div class="form">
             <mat-form-field>
@@ -27,9 +20,6 @@
                 </mat-select>
               </mat-form-field>
          </div>
-        
-
-         <!--trebaju nam u okviru dijaloga i dugmad, te kreiramo jos jedan div -->
         <div mat-dialog-actions>
             <button mat-button *ngIf="flag==1" type="submit" [mat-dialog-close]="1" (click)="addGrupa()" [disabled]="!formControl.valid">
                 <!--vezemo za dogadjaj na osnovu kog ce se pojaviti ovo dugmence, ali ovde moramo imati 2 sacuvaj jer 

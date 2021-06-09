@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Projekat } from 'src/app/models/projekat';
@@ -17,6 +19,11 @@ export class ProjekatComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'naziv', 'opis', 'oznaka','actions'];
   dataSource: MatTableDataSource<Projekat>;
 
+
+//komunikacija izmedju html i ts
+@ViewChild(MatSort, {static : false}) sort :MatSort; 
+@ViewChild(MatPaginator, {static : false}) paginator : MatPaginator;
+
   constructor(private projekatService : ProjekatService,
     private dialog: MatDialog) { }
 
@@ -27,12 +34,15 @@ export class ProjekatComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadData(); 
+
   }
 
   public loadData() {
     this.subscription = this.projekatService.getAllProjekti().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort; 
+        this.dataSource.paginator = this.paginator;
       }
     ),
 
@@ -52,6 +62,15 @@ export class ProjekatComponent implements OnInit, OnDestroy {
       }
     })
   }
+
+  applyFilter(filterValue : string) {
+
+    filterValue = filterValue.trim(); 
+    //trimuju se spejsovi 
+    filterValue = filterValue.toLowerCase(); 
+    this.dataSource.filter = filterValue;
+  }
+
 
 
 
