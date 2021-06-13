@@ -81,7 +81,7 @@ export class StudentComponent implements OnInit, OnDestroy, OnChanges {
       dialogRef.componentInstance.data.grupa = this.selektovanaGrupa;
      }
     dialogRef.afterClosed().subscribe(res => {
-      if(res ===1)
+      if(res ==1)
       {
         
         this.loadData(); 

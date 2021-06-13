@@ -22,6 +22,7 @@ export class StudentDialogComponent implements OnInit, OnDestroy{
   grupe : Grupa[];
   projekatSubscription: Subscription;
   grupaSubscription: Subscription;
+
   constructor(
     @Inject (MAT_DIALOG_DATA) public data: Student,
     public projekatService : ProjekatService,
@@ -69,7 +70,7 @@ export class StudentDialogComponent implements OnInit, OnDestroy{
     
     (error: Error) => {
       console.log(error.name + ' ' +error.message);
-      this.snackBar.open('Došlo je do greške prilikom dodavanja studenta: ' + this.data.ime+this.data.prezime, 'Zatvori', {
+      this.snackBar.open('Došlo je do greške prilikom dodavanja studenta: ' + this.data.ime+' '+this.data.prezime, 'Zatvori', {
         duration: 2500
       })
     }
@@ -79,13 +80,13 @@ export class StudentDialogComponent implements OnInit, OnDestroy{
   public updateStudenti(): void {
     this.studentService.updateStudenti(this.data)
     .subscribe(() => {
-      this.snackBar.open('Uspesno izmenjeni podaci o studentu '  + this.data.ime+this.data.prezime, 'OK', {
+      this.snackBar.open('Uspesno izmenjeni podaci o studentu '  + this.data.ime+' '+this.data.prezime, 'OK', {
         duration: 2500
       })
     }),
     (error: Error) => {
       console.log(error.name + ' ' +error.message);
-      this.snackBar.open('Došlo je do greške prilikom izmene podataka o studentu ' + this.data.ime+this.data.prezime, 'Zatvori', {
+      this.snackBar.open('Došlo je do greške prilikom izmene podataka o studentu ' + this.data.ime+' '+this.data.prezime, 'Zatvori', {
         duration: 2500
       })
     }
@@ -95,7 +96,7 @@ export class StudentDialogComponent implements OnInit, OnDestroy{
   public deleteStudenti(): void {
     this.studentService.deleteStudenti(this.data.id)
     .subscribe(() => {
-      this.snackBar.open('Uspesno obrisan student: ' + this.data.ime+this.data.prezime, 'OK', {
+      this.snackBar.open('Uspesno obrisan student: ' + this.data.ime+' '+this.data.prezime, 'OK', {
         duration: 2500
       })
     }),
